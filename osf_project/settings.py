@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'osf_project.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 #production databse postgres
-'''
+
 
 DATABASES = {
 
@@ -109,7 +109,7 @@ DATABASES = {
     }
 }
 
-
+'''
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
