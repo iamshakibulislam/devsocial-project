@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{% block title %}{% endblock title %}</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.0/css/font-awesome.min.css" integrity="sha512-FEQLazq9ecqLN5T6wWq26hCZf7kPqUbFC9vsHNbXMJtSZZWAcbJspT+/NEAQkBfFReZ8r9QlA9JHaAuo28MTJA==" crossorigin="anonymous" />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.js"></script>
+<div class="brands">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light  " style="background-color:#263947">
+  <a class="navbar-brand text-white font-weight-bold logo" href="{% url 'index' %}">OSF PREPRINTS</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse"  id="navbarNav" >
+    <ul class="navbar-nav ml-auto nav-items">
+      {% if request.user.is_authenticated %}
+      <li class="nav-item active">
+        <a class="nav-link text-white font-weight-bold" href="{% url 'my_preprints' %}">My preprints</a>
+      </li>
+      {% endif %}
+      <li class="nav-item active">
+        <a class="nav-link text-white font-weight-bold" href="{% url 'add_preprint' %}">Add a preprint</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link text-white font-weight-bold" href="{% url 'preprint_query_page' %}">Search</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link text-white font-weight-bold" href="{% url 'donation' %}">Donate</a>
+      </li>
+      {% if request.user.is_authenticated %}
+      <li class="nav-item active">
+        <a class="nav-link text-white font-weight-bold" href="{% url 'logout' %}">Logout</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link text-white font-weight-bold text-uppercase" href="#"> {{request.user.full_name}}</a>
+      </li>
+      {% else %}
+      <li class="nav-item active">
+        <a class="nav-link text-white font-weight-bold" href="{% url 'login' %}">Login</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link text-white font-weight-bold" href="{% url 'signup' %}">Register</a>
+      </li>
+
+      {% endif %}
+      
+    </ul>
+  </div>
+</nav>
+
+
+{% block content %}
+
+{% endblock content %}
+
+
+
+
+<section id="footer" style="margin-top:3rem">
+  <div class="row justify-content-center">
+    <div class="col-md-6 mt-4" style="border-top:1px solid black">
+      <p class="text-center mt-2"><span>Copyright © 2011-2021</span> <a href="https://cps.io"> Center for Open Science </a>|
+        <a href="https://github.com/CenterForOpenScience/centerforopenscience.org/blob/master/TERMS_OF_USE.md">Term of use</a> | <a href="https://github.com/CenterForOpenScience/centerforopenscience.org/blob/master/PRIVACY_POLICY.md">Privacy policy</a> | Technical support by <a href="https://tigerhats.com">TigerHATS Consulting</a> </p>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+
+</body>
+</html>

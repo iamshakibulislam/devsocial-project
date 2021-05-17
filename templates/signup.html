@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}Signup an account{% endblock title %}
+
+{% block content %}
+
+{% load static %}
+
+<!-- registration section -->
+
+
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-md-4 signup-form-container" style="margin-top:4rem">
+      <h1 class="display-5  text-center" style="margin-top: 4rem"><font color="black">OSF</font>
+        <font color="#0d9ddb">PREPRINTS</font></h1>
+
+        {% if userexist %}
+        <div class="alert alert-danger my-1">user already exists with this email</div>
+        {% endif %}
+        {% if success %}
+        <div class="alert alert-success my-1">account has been created ! Try <a href="{% url 'login' %}">login now</a></div>
+        {% endif %}
+        <p class="text-center">Create a free account</p>
+        <form method="post" action="">
+          {% csrf_token %}
+          <div class="form-group">
+            <input type="text" name="fullname" class="form-control" placeholder="full name">
+          </div>
+          <div class="form-group">
+            <input type="email" name="email" class="form-control" placeholder="enter your email">
+          </div>
+          <div class="form-group">
+            <input type="email" name="confirm-email" class="form-control" placeholder="confirm your email">
+          </div>
+          <div class="form-group">
+            <input type="password" name="password" class="form-control" placeholder="your password">
+          </div>
+          <div class="form-group">
+            <input type="checkbox" name="terms"> I have read and agree to the <a href="https://github.com/CenterForOpenScience/centerforopenscience.org/blob/master/TERMS_OF_USE.md">Terms of Use </a>and <a href="https://github.com/CenterForOpenScience/centerforopenscience.org/blob/master/PRIVACY_POLICY.md">Privacy Policy</a>.
+          </div>
+          <div class="form-group text-center">
+            <input type="submit" value="Sign up" class="btn btn-success text-white">
+          </div>
+        </form>
+    </div>
+  </div>
+</div>
+
+
+<!-- end of registration form here -->
+
+
+
+{% endblock content %}

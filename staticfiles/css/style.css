@@ -1,0 +1,295 @@
+
+.navbar-light{
+	border-radius: 1px;
+}
+
+.logo{
+	margin-left: 6rem !important;
+}
+
+
+.nav-items{
+	margin-right: 12rem !important;
+}
+
+.nav-items li{
+	margin-left:0.5rem;
+	margin-right: 0.5rem;
+}
+
+
+.nav-items li a:hover{
+	opacity: 0.6;
+
+}
+
+.hero-area{
+	width: 100vw;
+	height: 80vh !important;
+	background-color:#513163 !important;
+}
+
+
+.search-hero-area{
+	width: 100vw !important;
+	height: 70vh;
+	background-color: #e0ebef;
+}
+
+.head-title{
+	margin-top:6rem;
+}
+
+.large-input{
+	height: 3rem;
+	width:80% !important;
+	margin-left:2rem;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+
+.btn-simple{
+	background-color: white;
+	height: 3rem;
+	border-top-left-radius: 0px;
+	border-bottom-left-radius: 0px;
+}
+
+.btn-simple:hover{
+	background-color: #d3d2d9;
+	transition-duration: 0.3s;
+}
+
+.search-amount{
+	margin-left: 4rem;
+	margin-top:1px !important;
+	margin-bottom:1px !important;
+}
+
+.ortext{
+	margin-top: 2.5rem;
+	font-size: 23px;
+}
+
+.btn-add{
+	background-color: #077524;
+}
+
+.browse-text{
+	margin-top: 4.3rem;
+}
+
+.browse-header{
+	margin-left: 6rem;
+}
+
+.modifont{
+	font-size:2rem;
+	opacity: 0.7
+}
+
+.smallfont{
+	font-size: 1.4rem;
+	opacity: 0.5
+}
+
+.pre-item{
+	width: 100% !important;
+	background-color: #493b52;
+	padding-top:1rem !important;
+	padding-bottom: 1rem !important;
+}
+
+ul{
+	list-style-type: none;
+}
+
+
+.item-list li:hover{
+background-color: #075173;
+}
+
+.brand-head{
+	margin-left: 5rem;
+}
+
+#brands{
+	margin-top: 5rem;
+	background-color:#513163 !important;
+}
+
+.brand-head{
+	margin-top: 4rem;
+	margin-bottom: 4rem;
+}
+
+.list-img{
+	height: 80px;
+	width: 130px;
+}
+
+.movright{
+	margin-left: 6rem;
+}
+
+.name li{
+	margin-top:0.4rem;
+}
+
+
+/*** signup page styling starts here **/
+
+.signup-form-container{
+	background-color: #eee;
+	border-radius: 1rem;
+}
+
+#search-result{
+	margin-top: 5rem;
+}
+
+.head-bg{
+	background-color: #efefef;
+	padding: 7px 10px;
+}
+
+.add-preprint-box{
+	box-shadow: 1px 1px 2px 1px #d5d8de;
+	margin-top: 1rem;
+	padding-left: 1rem;
+	padding-right:0.3rem;
+	padding-top: 1rem;
+	padding-bottom:1rem; 
+}
+
+.search-result-item{
+	padding-left: 2rem;
+	padding-right: 2rem;
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+	box-shadow: 1px 1px 3px 1px #d5d8de;
+}
+
+
+/*** Add preprint page  **/
+
+
+.main-title{
+
+	margin-top: 5rem;
+	margin-bottom: 5rem;
+}
+
+
+.form-box{
+	margin-top:4rem;
+	padding-left: 2rem;
+	padding-right: 2rem;
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+	box-shadow: 1px 1px 3px 1px #d5d8de;
+}
+
+
+/**  form box carousel css */
+
+
+
+.brands {
+    width: 100%;
+   
+    padding-bottom: 90px
+}
+
+.brands_slider_container {
+    height: 180px;
+   
+    
+    padding-left: 97px;
+    padding-right: 97px;
+    background: #fff
+}
+
+.brands_slider {
+    height: 100%;
+    margin-top: 50px
+}
+
+.brands_item {
+    height: 100%
+}
+
+.brands_item img {
+    max-width: 100%;
+    padding:0px;
+    margin:0px;
+}
+
+.brands_nav {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    padding: 5px;
+    cursor: pointer
+}
+
+.brands_nav i {
+    color: #e5e5e5;
+    -webkit-transition: all 200ms ease;
+    -moz-transition: all 200ms ease;
+    -ms-transition: all 200ms ease;
+    -o-transition: all 200ms ease;
+    transition: all 200ms ease
+}
+
+.brands_nav:hover i {
+    color: #676767
+}
+
+.brands_prev {
+    left: 40px
+}
+
+.brands_next {
+    right: 40px
+}
+
+/* end of form box carousel */
+
+
+
+.img-fit{
+
+	height: 4rem;
+	width: 2rem;
+	opacity: 0.5 !important;
+}
+
+.cat-list{
+	overflow: scroll;
+	padding-left: 0rem;
+	padding-right: 1rem;
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+	border: 1px solid grey;
+	margin-top: 2rem;
+	height: 15rem;
+}
+
+
+.cat-list li{
+	padding-top:0.3rem;
+	margin-left: 0px;
+	padding-left: 1rem;
+
+
+
+}
+
+.cat-list li:hover{
+	background-color:#d4d2cd;
+}

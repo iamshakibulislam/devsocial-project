@@ -1,0 +1,621 @@
+{% extends 'base.html' %}
+{% block title %}Add new preprint {% endblock title %}
+{% block content %}
+{% load static %}
+
+<section id="submit-preprint-title">
+  <div class="row justify-content-center" style="background-image: url(https://osf.io/preprints/assets/img/submit_bg-a6c7bfb77c23952446355dde219e5535ac4fcf94.jpg);">
+    <div class="col-md-3">
+      <h1 class="text-center text-dark main-title">Create Preprint</h1>
+    </div>
+  </div>
+</section>
+
+<form method="post" action="" enctype="multipart/form-data">
+  {% csrf_token %}
+<section id="brand-box">
+  <div class="row justify-content-center">
+    <div>
+      <!--<h6 class="text-dark">Select a Service</h6>-->
+
+  
+         <input type="hidden" name="service" class="selected-service" >
+      <p class="ml-4"><span class="font-weight-bold mr-1 ml-4 provider-name"></span><span class="provider-desc"></span></p>
+    </div>
+      <!-- end of carousel -->
+
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-md-7 form-box">
+        <h6 class="ml-2">Upload file</h6>
+        <input type="file" name="file" class="form-control" style="height: 3rem" /><br>
+        <input type="text" name="title" placeholder="Enter Preprint Title" class="form-control">
+      </div>
+    </div>
+
+
+    <div class="row justify-content-center">
+      <div class="col-md-7 form-box">
+        <h6 class="ml-2">Author Assertions</h6><br>
+        <p class="font-weight-bold" style="opacity: 0.8">Public Data :  <span class="text-danger" style="opacity: 0.7">Required</span></p>
+        <input type="radio" name="publicdata" value="available" class="d-inline ml-1"><span class="text-dark"> Available</span>
+        <input type="radio" name="publicdata" value="no" class="d-inline ml-1"><span class="text-dark"> No</span>
+        <input type="radio" name="publicdata" value="not-applicable" class="d-inline ml-1"><span class="text-dark"> Not applicable</span><br>
+
+        <div class="form-group available-data-link mt-1 d-none"><span class="font-weight-bold">Link to Data:</span><span class="ml-1 text-danger">(required)</span>
+        <input type="text" name="available-data-link" class="form-control">
+        </div>
+
+
+        <div class="form-group not-available-describe mt-1 d-none"><span class="font-weight-bold">Describe:</span><span class="ml-1 text-danger">(required)</span>
+        <textarea name="not-available-describe" class="form-control"></textarea>
+        </div>
+        <p class="mt-3 py-4  not-applicable-text d-none text-dark" style="background-color: #ebe6e6 !important;padding-left: 1rem;padding-right: 1rem ">Author asserted there is no data associated with this preprint.</p>
+        <p class="mt-3 py-4   text-dark" style="background-color: #ebe6e6;padding-left: 1rem;padding-right: 1rem">Data refers to raw and/or processed information (quantitative or qualitative) used for the analyses, case studies, and/or descriptive interpretation in the preprint. Public data could include data posted to open-access repositories, public archival library collection, or government archive. For data that is available under limited circumstances (e.g., after signing a data sharing agreement), choose the ‘No’ option and use the comment box to explain how others could access the data.</p>
+
+
+        <!--pre registration form is here -->
+
+
+        <p class="font-weight-bold" style="opacity: 0.8">Preregistration :  <span class="text-danger" style="opacity: 0.7">Required</span></p>
+        <input type="radio" name="type-data" value="type-available" class="d-inline ml-1"><span class="text-dark"> Available</span>
+        <input type="radio" name="type-data" value="type-no" class="d-inline ml-1"><span class="text-dark"> No</span>
+        <input type="radio" name="type-data" value="type-not-applicable" class="d-inline ml-1"><span class="text-dark"> Not applicable</span><br>
+
+        <div class="form-group available-type-link mt-1 d-none"><span class="font-weight-bold">Link:</span><span class="ml-1 text-danger">(required)</span>
+        <input type="text" name="link" class="form-control">
+        </div>
+        <div class="form-group main-type mt-1 d-none"><span class="font-weight-bold">Type:</span><span class="ml-1 text-danger">(required)</span>
+          <select name="type" class="form-control">
+        <option value="Study Design">Study Design</option>
+         <option value="Analysis Plan">Analysis Plan</option>
+         <option value="Both">Both</option>
+          </select>
+        </div>
+
+
+        <div class="form-group not-available-type-describe mt-1 d-none"><span class="font-weight-bold">Describe:</span><span class="ml-1 text-danger">(required)</span>
+        <textarea name="not-available-type-description" class="form-control"></textarea>
+        </div>
+        <p class="mt-3 py-4  not-applicable-type-text d-none text-dark" style="background-color: #ebe6e6 !important;padding-left: 1rem;padding-right: 1rem ">Author asserted that preregistration was not applicable because no data collection, extraction, or analysis is reported in this preprint.</p>
+        <p class="mt-3 py-4   text-dark" style="background-color: #ebe6e6;padding-left: 1rem;padding-right: 1rem">A preregistration is a description of the research design and/or analysis plan that is created and registered before researchers collected data or before they have seen/interacted with preexisting data. The description should appear in a public registry (e.g., clinicaltrials.gov, OSF, AEA registry).</p>
+
+
+        <!--end of preretistraiton form-->
+      </div>
+    </div>
+
+    <!--Basics -->
+
+      <div class="row justify-content-center">
+      <div class="col-md-7 form-box">
+        <h6 class="ml-2 mb-4">Basics</h6>
+        <p><span class="font-weight-bold ml-4">Choose a license</span>:<span class="text-danger">(required)</span>
+          <select class="form-control license-type ml-4" name="license-type" style="width:40%" id="license-type">
+            <option value="no-license">No license</option>
+            <option value="cc">CC-By Attribution 4.0 International</option>\
+            <option value="cc-0">CC0 1.0 Universal</option>
+          </select>
+
+          <div class="form-group year-box">
+          <p><span class="font-weight-bold ml-4">Year</span>:<span class="text-danger">(required)</span></p>
+          <input type="text" name="year" class="form-control ml-4" placeholder="2021">
+        </div>
+
+        <div class="form-group copyright-box">
+          <p class="mt-1"><span class="font-weight-bold ml-4">Copyright holders</span>:<span class="text-danger">(required)</span></p>
+          <input type="text" name="copyright-holder" class="form-control ml-4" placeholder="name of your copyright holder">
+        </div>
+
+
+          <div class="row">
+            <div class="col-md-6">
+              <p class="ml-4 mt-4 font-weight-bold">Peer-reviewed publication DOI (optional):</p>
+              <input type="text" name="doi" placeholder="DOI" class="form-control ml-4">
+              <p class="ml-4 mt-4 font-weight-bold">Original publication date:</p>
+              <input type="text" name="pubdate" placeholder="12/03/2020" class="form-control ml-4">
+
+              <p class="ml-4 mt-4 mb-0 font-weight-bold">Keywords:</p>
+              <span class="ml-4 " style="font-size: 0.8rem">Add keywords to increase discoverability of your preprint</span>
+              <textarea name="keywords" placeholder="add a tag"  class="form-control ml-4 mt-2"></textarea>
+            </div>
+            <div class="col-md-6">
+              <div class="row justify-content-between">
+              <p class="ml-4 mt-4  font-weight-bold">Abstract:</p><p class="text-danger mt-4">required</p>
+            </div>
+              
+              <textarea class="form-control ml-2" rows="11" name="absctract" placeholder="Add a brief summery of your preprint"></textarea>
+            </div>
+          </div>
+
+        
+      </div>
+    </div>
+
+    <!--end of basics section -->
+  <div class="row justify-content-center">
+      <div class="col-md-7 form-box">
+        <h6 class="ml-2 font-weight-bold">Discipline</h6>
+        <p class="mt-3 ml-2" style="font-size: 0.8rem">Select a discipline and subdiscipline, if relevant. Add more by clicking on a new discipline or subdiscipline.</p>
+
+        <h6 class="selected-item bg-success text-white px-3 py-2 d-none"></h6>
+        <input type="hidden" name="selected-texonomy" id="selected-texonomy">
+        <input type="hidden" name="selected-main-taxonomy">
+        <div class="row">
+          <div class="col">
+            <ul class="list-style-none cat-list texonomies">
+              <li href="https://api.osf.io/v2/providers/preprints/osf/taxonomies/?filter%5Bparents%5D=584240d954be81056ceca9e5&page%5Bsize%5D=150">Architecture</li>
+              <li id="artsandhumanity" href="https://api.osf.io/v2/providers/preprints/osf/taxonomies/?filter%5Bparents%5D=584240da54be81056cecaab4&page%5Bsize%5D=150">
+              Arts and Humanities
+            </li>
+              <li href="https://api.osf.io/v2/providers/preprints/osf/taxonomies/?filter%5Bparents%5D=584240d954be81056ceca84d&page%5Bsize%5D=150">Business</li>
+              <li class="https://api.osf.io/v2/providers/preprints/osf/taxonomies/?filter%5Bparents%5D=584240da54be81056cecaae5&page%5Bsize%5D=150">Education</li>
+              <li href="https://api.osf.io/v2/providers/preprints/osf/taxonomies/?filter%5Bparents%5D=584240da54be81056cecaca9&page%5Bsize%5D=150">Engineering</li>
+              <li href="https://api.osf.io/v2/providers/preprints/osf/taxonomies/?filter%5Bparents%5D=584240db54be81056cecacd3&page%5Bsize%5D=150">Law</li>
+              <li href="https://api.osf.io/v2/providers/preprints/osf/taxonomies/?filter%5Bparents%5D=584240da54be81056cecaab0&page%5Bsize%5D=150">Life Sciences</li>
+              <li href="https://api.osf.io/v2/providers/preprints/osf/taxonomies/?filter%5Bparents%5D=584240da54be81056cecaaaa&page%5Bsize%5D=150">Medicine and Health Sciences</li>
+              <li href="https://api.osf.io/v2/providers/preprints/osf/taxonomies/?filter%5Bparents%5D=584240d954be81056ceca9a1&page%5Bsize%5D=150">Physical Sciences and Mathematics</li>
+              <li href="https://api.osf.io/v2/providers/preprints/osf/taxonomies/?filter%5Bparents%5D=584240da54be81056cecac48&page%5Bsize%5D=150">Social and Behavioral Sciences</li>
+            </ul>
+          </div>
+          <div class="col">
+            <ul class="list-style-none d-none cat-list Architecture sub-texonomy">
+              <li>Architectural Engineering</li>
+              <li>Architectural History and Criticism</li>
+              <li>Architectural Technology</li>
+              <li>Construction Engineering</li>
+              <li>Cultural Resource Management and Policy Analysis</li>
+              <li>Environmental Design</li>
+              <li>Historic Preservation and Conservation</li>
+              <li>Interior Architecture</li>
+              <li>Landscape Architecture</li>
+              <li>Urban, Community and Regional Planning</li>
+              <li>Other Architecture</li>
+              
+            </ul>
+
+            <ul class="list-style-none d-none cat-list artshumanities sub-texonomy">
+              <li>African Languages and Societies</li>
+              <li>American Studies</li>
+              <li>Appalachian Studies</li>
+              <li>Art and Design</li>
+              <li>Art Practice</li>
+              <li>Audio Arts and Acoustics</li>
+              <li>Australian Studies</li>
+              <li> Basque Studies</li>
+              <li> Celtic Studie</li>
+              <li>Classics</li>
+              <li>Comparative Literature</li>
+              <li>Creative Writing</li>
+              <li>Digital Humanities</li>
+              <li>Dutch Studies</li>
+              <li>East Asian Languages and Societies</li>
+              <li> English Language and Literature</li>
+              <li> European Languages and Societies</li>
+              <li>Feminist, Gender, and Sexuality Studies</li>
+              <li>Film and Media Studies</li>
+              <li> Fine Arts</li>
+              <li>French and Francophone Language and Literature</li>
+              <li>German Language and Literature</li>
+              <li>History</li>
+              <li>History of Art, Architecture, and Archaeology</li>
+              <li>Italian Language and Literature</li>
+              <li>Jewish Studies</li>
+              <li>Latin American Languages and Societies</li>
+              <li> Medieval Studies</li>
+              <li>Modern Languages</li>
+              <li>Modern Literature</li>
+              <li>Museum Studies</li>
+              <li>Music</li>
+              <li>Near Eastern Languages and Societies</li>
+              <li>Pacific Islands Languages and Societies</li>
+              <li>Philosophy</li>
+              <li>Photography</li>
+              <li>Race, Ethnicity and Post-Colonial Studies</li>
+              <li>Radio</li>
+              <li>Reading and Language</li>
+              <li>Religion</li>
+              <li>Rhetoric and Composition</li>
+              <li>Scandinavian Studies</li>
+              <li>Slavic Languages and Societies</li>
+              <li>South and Southeast Asian Languages and Societies</li>
+              <li>Spanish and Portuguese Language and Literature</li>
+              <li>Technical and Professional Writing</li>
+              <li>Television</li>
+              <li>Theatre and Performance Studies</li>
+              <li>Other Arts and Humanities</li>
+              <li>Other Languages, Societies, and Cultures</li>
+            </ul>
+
+
+            <ul class="list-style-none d-none cat-list business sub-texonomy">
+              <li>Accounting</li>
+              <li>Advertising and Promotion Management</li>
+              <li>Agribusiness</li>
+              <li>Arts Management</li>
+              <li>Business Administration, Management, and Operations</li>
+              <li>Business and Corporate Communications</li>
+              <li>Business Intelligence</li>
+              <li>Business Law, Public Responsibility, and Ethics Business</li>
+              <li>Corporate Finance</li>
+              <li>E-Commerce</li>
+              <li>Entrepreneurial and Small Business Operations</li>
+              <li>Fashion Business</li>
+              <li>Finance and Financial Management</li>
+              <li>Hospitality Administration and Management</li>
+              <li> Human Resources Management</li>
+              <li>Insurance</li>
+              <li>International Business</li>
+              <li>Labor Relations</li>
+              <li>Management Information Systems</li>
+              <li>Management Sciences and Quantitative Methods</li>
+              <li>Marketing</li>
+              <li> Nonprofit Administration and Management</li>
+              <li>Operations and Supply Chain Management</li>
+              <li> Organizational Behavior and Theory</li>
+              <li>Portfolio and Security Analysis</li>
+              <li>Real Estate</li>
+              <li>Recreation Business</li>
+              <li>Sales and Merchandising</li>
+              <li>Sports Management</li>
+              <li>Strategic Management Policy</li>
+              <li>Taxation</li>
+              <li>Technology and Innovation</li>
+              <li>Tourism and Travel</li>
+              <li>Other Business</li>
+            </ul>
+
+
+            <ul class="list-style-none d-none cat-list education sub-texonomy">
+              <li>Adult and Continuing Education</li>
+              <li>Art Education</li>
+              <li>Bilingual, Multilingual, and Multicultural Education</li>
+              <li>Community College Leadership</li>
+              <li>Curriculum and Instruction</li>
+              <li>Curriculum and Social Inquiry</li>
+              <li>Disability and Equity in Education</li>
+              <li>Early Childhood Education</li>
+              <li> Educational Administration and Supervision</li>
+              <li>Educational Assessment, Evaluation, and Research</li>
+              <li>Educational Leadership</li>
+              <li>Educational Methods</li>
+              <li>Educational Psychology</li>
+              <li>Education Economics</li>
+              <li>Elementary Education</li>
+              <li>Gifted Education</li>
+              <li>Health and Physical Education</li>
+              <li>Higher Education</li>
+              <li>Home Economics</li>
+              <li>Humane Education</li>
+              <li>Indigenous Education</li>
+              <li>Instructional Media Design</li>
+              <li>International and Comparative Education</li>
+              <li> Language and Literacy Education</li>
+              <li> Liberal Studies</li>
+              <li>Online and Distance Education</li>
+              <li>Outdoor Education</li>
+              <li>Science and Mathematics Education</li>
+              <li>Secondary Education</li>
+              <li>Social and Philosophical Foundations of Education</li>
+              <li>Special Education and Teaching</li>
+              <li>StudentVocational Education Counseling and Personnel Services</li>
+              <li>Teacher Education and Professional Development</li>
+              <li>Vocational Education</li>
+              <li>Other Education</li>
+            </ul>
+
+
+            <ul class="list-style-none d-none cat-list engineering sub-texonomy">
+              <li>Aerospace Engineering</li>
+              <li>Automotive Engineering</li>
+              <li>Aviation</li>
+              <li>Biomedical Engineering and Bioengineering</li>
+              <li>Bioresource and Agricultural Engineering</li>
+              <li>Chemical Engineering</li>
+              <li>Civil and Environmental Engineering</li>
+              <li>Computational Engineering</li>
+              <li>Computer Engineering</li>
+              <li>Electrical and Computer Engineering</li>
+              <li>Engineering Education</li>
+              <li>Engineering Science and Materials</li>
+              <li>Materials Science and Engineering</li>
+              <li>Mechanical Engineering</li>
+              <li>Mining Engineering</li>
+              <li>Nanoscience and Nanotechnology</li>
+              <li>Nuclear Engineering</li>
+              <li>Operations Research, Systems Engineering and Industrial Engineering</li>
+              <li>Risk Analysis</li>
+              <li>Other Engineering</li>
+            </ul>
+
+
+            <ul class="list-style-none d-none cat-list law sub-texonomy">
+              <li>Accounting Law</li>
+              <li>Administrative Law</li>
+              <li>Admiralty</li>
+              <li>Agency</li>
+              <li>Agriculture Law</li>
+              <li>Air and Space Law</li>
+              <li>Animal Law</li>
+              <li>Antitrust and Trade Regulation</li>
+              <li>Banking and Finance Law</li>
+              <li>Bankruptcy Law</li>
+              <li>Business Organizations Law</li>
+              <li>Civil Law</li>
+              <li>Civil Procedure</li>
+              <li> Civil Rights and Discrimination</li>
+              <li>Commercial Law</li>
+              <li>Common Law</li>
+              <li>Communications Law</li>
+              <li>Comparative and Foreign Law</li>
+              <li> Computer Law</li>
+              <li>Conflict of Laws</li>
+              <li>Constitutional Law</li>
+              <li>Construction Law</li>
+              <li>Consumer Protection Law</li>
+              <li>Contracts</li>
+              <li>Courts</li>
+              <li>Criminal Law</li>
+              <li>Criminal Procedure</li>
+              <li>Cultural Heritage Law</li>
+              <li>Disability Law</li>
+              <li>Disaster Law</li>
+              <li> Dispute Resolution and Arbitration</li>
+              <li>Education Law</li>
+              <li> Elder Law</li>
+              <li>Election Law</li>
+              <li>Energy and Utilities Law</li>
+              <li> Entertainment, Arts, and Sports Law</li>
+              <li>Environmental Law</li>
+              <li>Estates and Trusts</li>
+              <li> European Law</li>
+              <li>Evidence</li>
+              <li>Family Law</li>
+              <li>First Amendment</li>
+              <li>Food and Drug Law</li>
+              <li>Fourteenth Amendment</li>
+              <li>Fourth Amendment</li>
+              <li>Gaming Law</li>
+              <li>Government Contracts</li>
+              <li>Health Law and Policy</li>
+              <li>Housing Law</li>
+              <li>Human Rights Law</li>
+              <li>Immigration Law</li>
+              <li>Indian and Aboriginal Law</li>
+              <li>Insurance Law</li>
+              <li>Intellectual Property Law</li>
+              <li> International Humanitarian Law</li>
+              <li>International Law</li>
+              <li>International Trade Law</li>
+              <li> Internet Law</li>
+              <li> Judges</li>
+              <li>Jurisdiction</li>
+              <li>Jurisprudence</li>
+              <li>Juvenile Law</li>
+              <li>Labor and Employment Law</li>
+              <li>Land Use Law</li>
+              <li>Law and Economics</li>
+              <li>Law and Gender</li>
+              <li>Law and Philosophy</li>
+              <li>Law and Politics</li>
+              <li>Law and Psychology</li>
+              <li>Law and Race</li>
+              <li> Law and Society</li>
+              <li> Law Enforcement and Corrections</li>
+              <li>Law of the Sea</li>
+              <li>Legal Biography</li>
+              <li>Legal Education</li>
+              <li>Legal Ethics and Professional Responsibility</li>
+              <li>Legal History</li>
+              <li>Legal Profession</li>
+              <li>Legal Remedies</li>
+              <li>Legal Writing and Research</li>
+              <li>Legislation</li>
+              <li>Litigation</li>
+              <li>Marketing Law</li>
+              <li>Medical Jurisprudence</li>
+              <li>Military, War, and Peace</li>
+              <li>National Security Law</li>
+              <li>Natural Law</li>
+              <li>Natural Resources Law</li>
+              <li> Nonprofit Organizations Law</li>
+              <li>Oil, Gas, and Mineral Law</li>
+              <li> Organizations Law</li>
+              <li>President/Executive Department</li>
+              <li>Privacy Law</li>
+              <li> Property Law and Real Estate</li>
+              <li>Public Law and Legal Theory</li>
+              <li>Religion Law</li>
+              <li>Retirement Security Law</li>
+              <li>Rule of Law</li>
+              <li>Science and Technology Law</li>
+              <li>Second Amendment</li>
+              <li>Secured Transactions</li>
+              <li>Securities Law</li>
+              <li>Sexuality and the Law</li>
+              <li>Social Welfare Law</li>
+              <li>State and Local Government Law</li>
+              <li>Supreme Court of the United States</li>
+              <li>Taxation-Federal</li>
+              <li>Taxation-Federal Estate and Gift</li>
+              <li>Taxation-State and Local</li>
+              <li>Taxation-Transnational</li>
+              <li> Tax Law</li>
+              <li>Torts</li>
+              <li>Transnational Law</li>
+              <li>Transportation Law</li>
+              <li>Water Law</li>
+              <li>Workers' Compensation Law</li>
+              <li>Other Law</li>
+            </ul>
+
+
+            <ul class="list-style-none d-none cat-list lifescience sub-texonomy">
+              <li>Agriculture</li>
+              <li>Animal Sciences</li>
+              <li>Biochemistry, Biophysics, and Structural Biology</li>
+              <li>Biodiversity</li>
+              <li>Bioinformatics</li>
+              <li>Biology</li>
+              <li>Biotechnology</li>
+              <li>Cell and Developmental Biology</li>
+              <li>Ecology and Evolutionary Biology</li>
+              <li>Entomology</li>
+              <li>Food Science</li>
+              <li>Forest Sciences</li>
+              <li>Genetics and Genomics</li>
+              <li>  Immunology and Infectious Disease</li>
+              <li>Kinesiology</li>
+              <li>Laboratory and Basic Science Research Life Sciences</li>
+              <li>Marine Biology</li>
+              <li>Microbiology</li>
+              <li>Neuroscience and Neurobiology</li>
+              <li>Nutrition</li>
+              <li> Pharmacology, Toxicology and Environmental Health</li>
+              <li> Physiology</li>
+              <li>Plant Sciences</li>
+              <li>Research Methods in Life Sciences</li>
+              <li>Systems Biology</li>
+              <li>Other Life Sciences</li>
+            </ul>
+
+            <ul class="list-style-none d-none cat-list madicineandhealth sub-texonomy">
+              <li>Alternative and Complementary Medicine</li>
+              <li>Analytical, Diagnostic and Therapeutic Techniques and Equipment</li>
+              <li>Anatomy</li>
+              <li>Bioethics and Medical Ethics</li>
+              <li>Chemicals and Drugs</li>
+              <li>Communication Sciences and Disorders</li>
+              <li>Dentistry</li>
+              <li>Dietetics and Clinical Nutrition</li>
+              <li>Diseases</li>
+              <li>Health and Medical Administration</li>
+              <li>Health Information Technology</li>
+              <li>Medical Education</li>
+              <li> Medical Humanities</li>
+              <li>Medical Sciences</li>
+              <li>Medical Specialties</li>
+              <li>Mental and Social Health</li>
+              <li>Nanotechnology</li>
+              <li> Nursing</li>
+              <li>Optometry</li>
+              <li>Organisms</li>
+              <li>Pharmacy and Pharmaceutical Sciences</li>
+              <li>Psychiatry and Psychology</li>
+              <li>Public Health</li>
+              <li>Rehabilitation and Therapy</li>
+              <li>Sports Sciences</li>
+              <li>Translational Medical Research</li>
+              <li>Veterinary Medicine</li>
+              <li>Other Medicine and Health Sciences</li>
+            </ul>
+
+             <ul class="list-style-none d-none cat-list physicalscienceandmath sub-texonomy">
+               <li>Applied Mathematics</li>
+               <li>Astrophysics and Astronomy</li>
+               <li>Chemistry</li>
+               <li>Computer Sciences</li>
+               <li>Earth Sciences</li>
+               <li>Environmental Sciences</li>
+               <li>Mathematics</li>
+               <li>Oceanography and Atmospheric Sciences and Meteorology</li>
+               <li> Physics</li>
+               <li>Statistics and Probability</li>
+               <li> Other Physical Sciences and Mathematics</li>
+             </ul>
+
+             <ul class="list-style-none d-none cat-list socialbehavioralscience sub-texonomy">
+               <li>Agricultural and Resource Economics</li>
+               <li>Animal Studies</li>
+               <li>Anthropology</li>
+               <li>Communication</li>
+               <li>Counseling</li>
+               <li>Economics</li>
+               <li>Environmental Studies</li>
+               <li>Food Studies</li>
+               <li>Geography</li>
+               <li>International and Area Studies</li>
+               <li>Leadership Studies</li>
+               <li>Legal Studies</li>
+               <li> Leisure Studies</li>
+               <li>Library and Information Science</li>
+               <li>Linguistics</li>
+               <li>Organization Development</li>
+               <li>Political Science</li>
+               <li>Psychology</li>
+               <li>Public Affairs, Public Policy and Public Administration</li>
+               <li>Science and Technology Studies</li>
+               <li>Social Statistics</li>
+               <li> Social Work</li>
+               <li>Sociology</li>
+               <li> Sports Studies</li>
+               <li>Urban Studies and Planning</li>
+               <li> Other Social and Behavioral Sciences</li>
+             </ul>
+
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- starting author row -->
+
+    <div class="row justify-content-center">
+      <div class="col-md-7 form-box">
+        <h6 class="ml-2 font-weight-bold">Authors</h6>
+        
+        <input type="text" name="authors" placeholder="author1,author2,author3" class="form-control ml-2">
+        <p class="text-dark ml-2" style="font-size: 0.7rem">seperate authors by comma</p><br>
+        <h5 class="font-weight-bold text-dark ml-2">Default Author</h5>
+        <input type="text" name="default-author" disabled="true" style="width: 40%;height: 3rem;background-color: #b8bfba" class="ml-2 px-2 py-3" value="MD SHAKIBUL ISLAM">
+      </div>
+    </div>
+
+    <!--end of author row -->
+
+
+    <!--author interest is here -->
+
+    <div class="row justify-content-center">
+      <div class="col-md-7 form-box">
+        <h6 class="ml-2">Conflict of interest</h6><br>
+        
+        
+        <input type="radio" name="conflict-interest" value="yes" class="d-inline ml-1"><span class="text-dark"> Yes</span>
+        <input type="radio" name="conflict-interest" value="no" class="d-inline ml-1"><span class="text-dark"> No</span><br>
+
+       
+
+
+        <div class="form-group conflict-interest-describe mt-1 d-none"><span class="font-weight-bold">Describe:</span><span class="ml-1 text-danger">(required)</span>
+        <textarea name="conflict-interest-describe" class="form-control"></textarea>
+        </div>
+        <p class="mt-3 py-4  no-interest-text d-none text-dark" style="background-color: #ebe6e6 !important;padding-left: 1rem;padding-right: 1rem ">Author asserted no conflict of interest.</p>
+        <p class="mt-3 py-4   text-dark" style="background-color: #ebe6e6;padding-left: 1rem;padding-right: 1rem">The Conflict of Interest (COI) assertion is made on behalf of all the authors listed for this preprint. COIs include: financial involvement in any entity such as honoraria, grants, speaking fees, employment, consultancies, stock ownership, expert testimony, and patents or licenses. COIs can also include non-financial interests such as personal or professional relationships or pre-existing beliefs in the subject matter or materials discussed in this preprint.</p>
+
+      </div>
+    </div>
+    <!-- end of author interest is here -->
+
+
+    <div class="row justify-content-center">
+      <div class="col-md-9 mt-4">
+      <p class="lead ml-2">By creating this preprint, you confirm that all contributors agree with sharing it and that you have the right to share this preprint.
+
+</p>
+<p class="ml-2" style="font-size: 1.1rem">When you create this preprint, it will be assigned a DOI and become publicly accessible via OSF. The preprint file cannot be deleted, but it can be updated or modified.</p><br>
+<div class="row justify-content-center">
+  <div class="col-md-10 text-right">
+<button type="submit" class="btn btn-lg btn-success text-white mr-4">Create Preprint</button>
+</div>
+</div>
+    </div>
+  </div>
+</form>
+</section>
+
+{% endblock content %}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}My preprint list{%endblock title %}
+{% load static %}
+
+{% block content %}
+<div class="row justify-content-center" style="margin-bottom:4rem">
+	<div class="col-md-6">
+		<h3 class="text-center font-weight-bold" style="margin-top:4rem">My preprint list</h3>
+	
+</div>
+</div>
+          	{% if results %}
+          	{% for result in results %}
+<div class="row search-result-item justify-content-center">
+          <div class="col-md-6 search-result-item">
+
+            <h4 class="ml-1"><a href="{{result.file.url}}">{{result.title}}</a></h4>
+            <span class="ml-1">{{result.default_author.full_name}}</span><br>
+            <p class="text-italic ml-1">license type: {{result.license_type}}</p>
+            <p style="opacity: 0.7" class="ml-1">{{result.selected_main_taxonomy}} > {{result.selected_texonomy}}</p>
+            <p class="text-italic ml-1">preprint status : {% if result.approved %}<span class="text-success">(approved)</span>{% else %} <span class="text-danger">(waiting for approval)</span>{% endif %}</p>
+            
+          </div>
+ </div>
+
+ {% endfor %}
+            {% else %}
+            <div class="row search-result-item justify-content-center">
+            <div class="col-md-6">
+          	
+          	
+            <h4 class="ml-1 text-center">You have not created any preprint !</h4>
+        </div>
+    </div>
+            
+            {% endif %}
+
+{% endblock content %}

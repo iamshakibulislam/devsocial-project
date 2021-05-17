@@ -1,0 +1,49 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Login to your account {% endblock title %}
+
+{% block content %}
+{% load static %}
+<!-- login section -->
+
+
+<div class="container-fluid" style="background-image: url({% static 'img/bg.jpg' %});height: 100vh">
+  <div class="row justify-content-center">
+    <div class="col-md-4 signup-form-container" style="margin-top:4rem;margin-bottom: 3rem">
+      <h1 class="display-5  text-center" style="margin-top: 4rem"><font color="black">OSF</font>
+        <font color="#0d9ddb">PREPRINTS</font></h1>
+        {% if message %}
+        <div class="alert alert-danger">{{message}}</div>
+        {% endif %}
+        <p class="text-center font-weight-bold">Sign in with your credentials</p>
+        <form method="post" action="">
+          {% csrf_token %}
+          
+          <div class="form-group">
+            <input type="email" name="email" class="form-control" placeholder="yourname@email.com">
+          </div>
+          
+          <div class="form-group">
+            <input type="password" name="password" class="form-control" placeholder="your password">
+          </div>
+
+          <div class="form-group">
+            <input type="checkbox" name="terms"> Stay signed in
+          </div>
+          
+          <div class="form-group text-center">
+            <input type="submit" value="Sign in" class="btn btn-success" style="width: 100%">
+          </div>
+        </form><br>
+        <a href="passreset" class="text-white text-dark text-right d-block" style="margin-bottom: 3rem">Reset your password</a>
+    </div>
+  </div>
+</div>
+
+
+<!-- end of registration form here -->
+
+
+
+{% endblock content %}

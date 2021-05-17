@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+{% block title %}Preprint server {% endblock %}
+
+{% block content %}
+{% load static %}
+<section id="hero-section">
+<div class="container-fluid">
+	
+	<div class="row hero-area justify-content-center">
+		<div class="col-md-7">
+			<h1 class="display-4 head-title text-center"><font color="white">OSF</font>
+				<font color="#0d9ddb">PREPRINTS</font></h1><br>
+			<form class="form-inline" method="post" action="{% url 'preprint_search' %}">
+				{% csrf_token %}
+			
+				<input type="text" name="keyword" class="form-control input-lg large-input mt-3" placeholder="Search preprints....">
+				<input type="submit" name="submitbtn" value="Search" class="btn btn-simple btn-md mt-3"><br>
+				
+			
+			</form>
+			
+			<p class="search-amount  text-white" style="display:block">Over 2,298,856 searchable as of  2021</p>
+			<div class="extra text-center">
+				<div class="text-white ortext text-center ">or</div>
+				<button class="btn btn-success btn-lg mx-auto mt-3 btn-add">Add a preprint</button>
+			</div>
+		</div>
+	</div>
+</div>
+</section>
+
+<section class="category">
+<div class="container-fluid">
+	<div class="row browse-text"><p class="browse-header">
+		<span class="modifont mr-1">Browse</span> <span class="smallfont">by subjects</span></p></div>
+</div>
+
+<div class="row justify-content-center">
+	<div class="col-md-5">
+		<ul class="list-style-none item-list" style="width:100%">
+			<a href="#"><li class="pre-item text-center text-white my-3 py-2">Architecture</li></a>
+			<a href="#"><li class="pre-item text-center text-white my-3 py-2">Business</li></a>
+			<a href="#"><li class="pre-item text-center text-white my-3 py-2">Engineering</li></a>
+			<a href="#"><li class="pre-item text-center text-white my-3 py-2"> Life Sciences</li></a>
+			<a href="#"><li class="pre-item text-center text-white my-3 py-2">Physical Science and Mthematics</li></a>
+		</ul>
+	</div>
+	<div class="col-md-5">
+		<ul class="list-style-none item-list" style="width:100%">
+			<a href="#"><li class="pre-item text-center text-white my-3 py-2">Arts and Humanities</li></a>
+			<a href="#"><li class="pre-item text-center text-white my-3 py-2">Education</li></a>
+			<a href="#"><li class="pre-item text-center text-white my-3 py-2">Law</li></a>
+			<a href="#"><li class="pre-item text-center text-white my-3 py-2"> Medicine and Health Sciences</li></a>
+			<a href="#"><li class="pre-item text-center text-white my-3 py-2">Social and Behavioral Sciences</li></a>
+		</ul>
+	</div>
+</div>
+
+</section>
+
+
+<section id="brands">
+	<div class="container-fluid service-container">
+		<div class="row mt-4">
+			<div class="col-md-10 brand-head">
+			<h3 class="text-white">Preprint services</h3>
+			
+			<p class="text-white">Leading preprint service providers use this open source infrastructure to support their communities.</p>
+			</div>
+
+		</div>
+
+		<div class="row px-4 mx-4">
+			<div class="col">
+
+				<img src="{% static 'img/services/1.png' %}" class="list-img">
+				
+			</div>
+
+			<div class="col"><img src="{% static 'img/services/2.png' %}" alt="" class="list-img"></div>
+			<div class="col"><img src="{% static 'img/services/3.png' %}" alt="" class="list-img"></div>
+			<div class="col"><img src="{% static 'img/services/4.png' %}" alt="" class="list-img"></div>
+			<div class="col"><img src="{% static 'img/services/5.png' %}" alt="" class="list-img"></div>
+			<div class="col"><img src="{% static 'img/services/6.png' %}" alt="" class="list-img"></div>
+			<div class="col"><img src="{% static 'img/services/7.png' %}" alt="" class="list-img"></div>
+			<div class="col"><img src="{% static 'img/services/8.png' %}" alt="" class="list-img"></div>
+			<div class="col"><img src="{% static 'img/services/9.png' %}" alt="" class="list-img"></div>
+			<div class="col"><img src="{% static 'img/services/10.png' %}" alt="" class="list-img"></div>
+			<div class="col"><img src="{% static 'img/services/11.png' %}" alt="" class="list-img"></div>
+			<div class="col"><img src="{% static 'img/services/12.png' %}" alt="" class="list-img"></div>
+			<div class="col"><img src="{% static 'img/services/13.png' %}" alt="" class="list-img"></div>
+			<div class="col"><img src="{% static 'img/services/14.png' %}" alt="" class="list-img"></div>
+			<div class="col"><img src="{% static 'img/services/15.png' %}" alt="" class="list-img"></div>
+			<div class="col"><img src="{% static 'img/services/16.png' %}" alt="" class="list-img"></div>
+			<div class="col"><img src="{% static 'img/services/17.png' %}" alt="" class="list-img"></div>
+			<div class="col"><img src="{% static 'img/services/18.png' %}" alt="" class="list-img"></div>
+			<div class="col"><img src="{% static 'img/services/19.png' %}" alt="" class="list-img"></div>
+			<div class="col"><img src="{% static 'img/services/20.png' %}" alt="" class="list-img"></div>
+			<div class="col"><img src="{% static 'img/services/21.png' %}" alt="" class="list-img"></div>
+			<div class="col"><img src="{% static 'img/services/22.png' %}" alt="" class="list-img"></div>
+			<div class="col"><img src="{% static 'img/services/23.png' %}" alt="" class="list-img"></div>
+			<div class="col"><img src="{% static 'img/services/24.png' %}" alt="" class="list-img"></div>
+			<div class="col"><img src="{% static 'img/services/25.png' %}" alt="" class="list-img"></div>
+			<div class="col"><img src="{% static 'img/services/26.png' %}" alt="" class="list-img"></div>
+		</div>
+	</div>
+</section>
+
+
+<section id="group">
+	<div class="container-fluid mt-4">
+		<div class="row mt-4">
+			<div class="col-md-7 movright">
+			<h3>Advisory Group</h3>
+			<p>Our advisory group includes leaders in preprints and scholarly communication</p>
+			</div>
+		</div>
+		<div class="row justify-content-center">
+			<div class="col-md-5">
+				<ul class="name">
+					<li><span class="font-weight-bold mx-1">Devin Berg</span>: engrXiv, University of Wisconsin-Stout</li>
+					<li><span class="font-weight-bold mx-1">Pete Binfield</span>: PeerJ PrePrints</li>
+					<li><span class="font-weight-bold mx-1">Benjamin Brown</span>: PsyArXiv, Georgia Gwinnett College</li>
+
+					<li><span class="font-weight-bold mx-1">Philip Cohen</span>: SocArXiv, University of Maryland</li>
+					<li><span class="font-weight-bold mx-1">Kathleen Fitzpatrick</span>: Modern Language Association</li>
+
+				</ul>
+			</div>
+			<div class="col-md-5">
+				<ul class="name">
+					<li><span class="font-weight-bold mx-1">John Inglis</span>: bioRxiv, Cold Spring Harbor Laboratory Press</li>
+					<li><span class="font-weight-bold mx-1">Rebecca Kennison</span>: K | N Consultants</li>
+					<li><span class="font-weight-bold mx-1">Kristen Ratan</span>: CoKo Foundation</li>
+
+					<li><span class="font-weight-bold mx-1">Oya Rieger</span>: Ithaka S+R SHARE, Association of Research Libraries</li>
+					<li><span class="font-weight-bold mx-1">Judy Ruttenberg</span>: SHARE, Association of Research Libraries</li>
+
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+
+{% endblock %}
+
