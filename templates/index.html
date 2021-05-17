@@ -8,8 +8,8 @@
 	
 	<div class="row hero-area justify-content-center">
 		<div class="col-md-7">
-			<h1 class="display-4 head-title text-center"><font color="white">OLIB</font>
-				<font color="#0d9ddb">PREPRINTS</font></h1><br>
+			<h1 class="display-4 head-title text-center">
+				<font color="#0d9ddb">Open Library for Humanity</font></h1><br>
 			<form class="form-inline" method="post" action="{% url 'preprint_search' %}">
 				{% csrf_token %}
 			
@@ -115,10 +115,25 @@
 			<p>Our advisory group includes leaders in preprints and scholarly communication</p>
 			</div>
 		</div>
-		<div class="row justify-content-center mt-4">
-			<div class="col-md-7 text-center">
-				<h2 class="text-dark">Monzur Morshed : Honorary Adviser , Open Library for Humanity</h2>
+		
+			<div class="row justify-content-center">
+			<div class="col-md-5">
+				<ul class="name">
+					<li><span class="font-weight-bold mx-1">Monzur Morshed</span>: Honorary Adviser, Open Library for Humanity</li>
+					
+				</ul>
 			</div>
+			<div class="col-md-5">
+				<ul class="name">
+					<!--<li><span class="font-weight-bold mx-1">John Inglis</span>: bioRxiv, Cold Spring Harbor Laboratory Press</li>
+					<li><span class="font-weight-bold mx-1">Rebecca Kennison</span>: K | N Consultants</li>
+					<li><span class="font-weight-bold mx-1">Kristen Ratan</span>: CoKo Foundation</li>
+
+					<li><span class="font-weight-bold mx-1">Oya Rieger</span>: Ithaka S+R SHARE, Association of Research Libraries</li>
+					<li><span class="font-weight-bold mx-1">Judy Ruttenberg</span>: SHARE, Association of Research Libraries</li>
+				-->
+
+				</ul>
 			
 		</div>
 	</div>
