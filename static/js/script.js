@@ -322,12 +322,12 @@ $(document).ready(function() {
 
 		$("input[type='checkbox']").on('click',function(event){
 			if ($(this).attr('name')=='terms'){
-				
-				return false;
-			};
+
+			
+			} else {
 			var keyword = $(this).parent().text().trim();
 	
-			window.location='/preprints/search_by_topic/'+keyword;
+			window.location='/preprints/search_by_topic/'+keyword;}
 		});
 
 
