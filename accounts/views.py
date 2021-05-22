@@ -1,7 +1,8 @@
 from django.shortcuts import render,redirect
 from .models import User
 from django.contrib import auth
-
+from django.contrib.auth.hashers import check_password
+from django.core.mail import send_mail
 def signup(request):
 
 	if request.method == 'GET':
@@ -51,3 +52,37 @@ def login(request):
 def logout(request):
 	auth.logout(request)
 	return redirect('index')
+
+
+
+
+def update_profile(request):
+	if request.method == 'GET':
+
+		return render(request,'update-profile.html')
+
+
+	if request.method == 'POST':
+		name = request.POST['full_name']
+		passavailable=False
+		try:
+			s=User.objects.get(email=request.user.email)
+			s.full_name = name
+			s.save()
+			curr_pass = request.POST['current_pass']
+			new_pass = request.POST['new_pass']
+			check_pass=check_password(curr_pass,request.user.password)
+			passavailable = True
+			print('your status',passavailable)
+
+		except:
+			return render(request,'update-profile.html',{'message':'Updated information'})
+
+		if passavailable == True:
+			sel=User.objects.get(email=request.user.email)
+			sel.set_password(new_pass)
+			sel.save()
+			return render(request,'update-profile.html',{'message':'Updated information'})
+
+		
+

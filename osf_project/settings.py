@@ -113,10 +113,10 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+
+
 '''
-
-
-
 
 
 
@@ -167,3 +167,13 @@ MEDIA_ROOT = 'media'
 
 
 AUTH_USER_MODEL = 'accounts.User'
+
+
+EMAIL_MAIL_HTML = 'accounts/password-reset-email-template.html'
+DEFAULT_FROM_EMAIL = 'olib.org <preprints@olib.org>'
+EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.zoho.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'preprints@olib.org'
+EMAIL_HOST_PASSWORD = 'BSr7zrb6Kp5m'

@@ -26,7 +26,8 @@ urlpatterns = [
     path('accounts/',include('accounts.urls')),
     path('dashboard/',include('dashboard.urls')),
     path('preprints/',include('preprints.urls')),
-    path('donation/',TemplateView.as_view(template_name='donation.html'),name='donation')
+    path('donation/',TemplateView.as_view(template_name='donation.html'),name='donation'),
+    path('contact-us/',TemplateView.as_view(template_name='contact.html'),name='contactus')
 
 ]
 

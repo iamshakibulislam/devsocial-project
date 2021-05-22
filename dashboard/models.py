@@ -1,6 +1,6 @@
 from django.db import models
 from accounts.models import User
-
+from django.core.mail import send_mail
 class PreprintDetails(models.Model):
 	service = models.CharField(null=True,blank=True,max_length=40)
 	file = models.FileField(null=True,upload_to='media',blank=True)
@@ -23,6 +23,14 @@ class PreprintDetails(models.Model):
 	conflict_interest_describe = models.TextField(null=True,blank=True)
 	default_author = models.ForeignKey(User,null=True,blank=True,max_length=30,on_delete=models.CASCADE)
 	approved = models.BooleanField(default=False)
+	rejected = models.BooleanField(default=False)
+
+	def save(self, *args, **kwargs):
+		if self.approved == True :
+			send_mail('Your preprint has been approved', 'Congratulations ! your preprint has been approved by the administrator', 'preprints@olib.org', [self.default_author.email,])
+		elif self.rejected == True:
+			send_mail('Unfortunately your preprint has been rejected', 'We are sorry , your preprint has been rejected by the administrator', 'preprints@olib.org', [self.default_author.email,])
+		super(PreprintDetails, self).save(*args, **kwargs)
 
 	class Meta:
 		verbose_name = 'preprint details'

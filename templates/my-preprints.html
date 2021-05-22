@@ -19,7 +19,8 @@
             <span class="ml-1">{{result.default_author.full_name}}</span><br>
             <p class="text-italic ml-1">license type: {{result.license_type}}</p>
             <p style="opacity: 0.7" class="ml-1">{{result.selected_main_taxonomy}} > {{result.selected_texonomy}}</p>
-            <p class="text-italic ml-1">preprint status : {% if result.approved %}<span class="text-success">(approved)</span>{% else %} <span class="text-danger">(waiting for approval)</span>{% endif %}</p>
+            <p class="text-italic ml-1">preprint status : {% if result.approved %}<span class="text-success">(approved)</span>{% elif result.rejected %}<span class="text-danger">(Rejected)</span>{% else %} <span class="text-danger">(waiting for approval)</span>
+            {% endif %}</p>
             
           </div>
  </div>
