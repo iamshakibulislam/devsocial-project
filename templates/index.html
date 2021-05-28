@@ -10,7 +10,7 @@
 		<div class="col-md-7">
 			<h1 class="display-4 head-title text-center font-weight-bold">
 				<font color="#0d9ddb">Open Library for Humanity</font></h1><br>
-			<form class="form-inline" method="post" action="{% url 'preprint_search' %}">
+			<form class="form-inline" method="get" action="{% url 'preprint_search' %}">
 				{% csrf_token %}
 			
 				<input type="text" name="keyword" class="form-control input-lg large-input mt-3" placeholder="Search preprints....">
@@ -120,12 +120,13 @@
 			<div class="col-md-5">
 				<ul class="name">
 					<li><span class="font-weight-bold mx-1">Monzur Morshed</span>: Honorary Adviser, Open Library for Humanity</li>
+					<li><span class="font-weight-bold mx-1">Meftah Ur Rahman</span>: George Mason University, USA</li>
 					
 				</ul>
 			</div>
 			<div class="col-md-5">
 				<ul class="name">
-					<li><span class="font-weight-bold mx-1">Meftah Ur Rahman</span>: George Mason University, USA</li>
+					
 					<!--
 					<li><span class="font-weight-bold mx-1">Rebecca Kennison</span>: K | N Consultants</li>
 					<span class="font-weight-bold mx-1">Kristen Ratan</span>: CoKo Foundation</li>

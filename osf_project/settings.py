@@ -49,7 +49,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    #'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
 ROOT_URLCONF = 'osf_project.urls'
@@ -78,7 +78,6 @@ WSGI_APPLICATION = 'osf_project.wsgi.application'
 
 #production databse postgres
 
-
 DATABASES = {
 
     'default': {
@@ -105,8 +104,8 @@ DATABASES = {
 
 
 #end of production databse postgres
-
 '''
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -115,8 +114,8 @@ DATABASES = {
 }
 
 
-
 '''
+
 
 
 

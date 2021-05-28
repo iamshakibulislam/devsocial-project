@@ -1,7 +1,8 @@
 from django.shortcuts import render,redirect
 from .models import *
 from django.contrib.auth.decorators import login_required
-
+from django.db.models import Q
+from django.core.paginator import Paginator,EmptyPage, PageNotAnInteger
 @login_required(login_url='/accounts/login/')
 def add_preprint(request):
 
@@ -69,5 +70,14 @@ def add_preprint(request):
 @login_required(login_url='/accounts/login/')
 def my_preprints(request):
 	if request.method == 'GET':
+
 		f=PreprintDetails.objects.filter(default_author=request.user)
-		return render(request,'my-preprints.html',{'results':f})
+		page = request.GET.get('page', 1)
+		paginator = Paginator(f, 8)
+		try:
+			results = paginator.page(page)
+		except PageNotAnInteger:
+			results = paginator.page(1)
+		except EmptyPage:
+			results = paginator.page(paginator.num_pages)
+		return render(request,'my-preprints.html',{'results':results})

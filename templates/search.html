@@ -11,8 +11,8 @@
 			<h1 class="display-4 head-title text-center font-weight-bold">
 				<font color="#0d9ddb">Open Library for Humanity
 </font></h1><br>
-			<form class="form-inline" method="post" action="{% url 'preprint_search' %}">
-                {% csrf_token %}
+			<form class="form-inline" method="get" action="{% url 'preprint_search' %}">
+                
 			
 				<input type="text" name="keyword" class="form-control input-lg large-input mt-3" placeholder="Search preprints....">
 				<input type="submit" name="submitbtn" value="Search" class="btn btn-simple btn-md mt-3"><br>
@@ -8335,10 +8335,15 @@
       {% for result in results %}
         <div class="row search-result-item justify-content-center ml-3">
           <div class="col-md-10">
-            <h4 class="ml-1"><a href="{{result.file.url}}">{{result.title}}</a></h4>
-            <span class="ml-1">{{result.default_author.full_name}}</span><br>
-            <p class="text-italic ml-1">license type: {{result.license_type}}</p>
-            <p style="opacity: 0.7" class="ml-1">{{result.selected_main_taxonomy}} > {{result.selected_texonomy}}</p>
+            <h4 class="ml-1"><a class="text-dark" href="{% url 'preprint_details' result.id %}">{{result.title}}</a></h4>
+            <span class="ml-1 mt-2">{{result.default_author.full_name}},{{result.authors}}</span><br>
+            <p class="mt-2"><span class="ml-1 "><i>Last edited</i> : {{result.date}} UTC</span></p>
+            <p class="text-italic ml-1 mt-1">{% for x in result.keywords %} <span style="background-color:#e9f2f1;margin-right:4px;padding-left:7px;padding-right:7px;padding-top:4px;padding-bottom:4px">{{x}} </span>{% endfor %}</p>
+            <p style="opacity: 0.7" class="ml-1">{{result.selected_main_taxonomy}} > {{result.selected_texonomy}}</p><br>
+            <p class="text-dark abstract-text-summ" style="opacity:0.7;">{{result.summery}}....</p><br>
+            <p class="text-dark abstract-text d-none" style="opacity:0.7;">{{result.absctract}}</p><br>
+
+            <p class="text-center text-primary icon"><i class="fa fa-chevron-down text-center arrow-btn"></i><i class="fa fa-chevron-up text-center arrow-up-btn d-none"></i></p>
           </div>
         </div>
         {% endfor %}
@@ -8355,7 +8360,67 @@
 </section>
 
 
+<section class="pagination-sec mt-4">
+    <div class="row justify-content-end">
+        <div class="col-md-4">
+<nav aria-label="Page navigation example">
+    {% if results.has_other_pages %}
+  <ul class="pagination">
+    {% if users.has_previous %}
+      <li class="page-item"><a class="page-link" href="{% url 'preprint_search' %}?page={{ results.previous_page_number }}&keyword={{keyword}}">&laquo;</a></li>
+    {% else %}
+      <li class="page-item disabled"><a class="page-link"><span>&laquo;</span></a></li>
+    {% endif %}
+    {% for i in results.paginator.page_range %}
+      {% if results.number == i %}
+        <li class="active page-item"><a class="page-link"><span>{{ i }} <span class="sr-only">(current)</span></span></a></li>
+      {% else %}
+        <li class="page-item"><a class="page-link" href="{% url 'preprint_search' %}?page={{ i }}&keyword={{keyword}}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if results.has_next %}
+      <li><a class="page-link" href="{% url 'preprint_search' %}?page={{ results.next_page_number }}&keyword={{keyword}}">&raquo;</a></li>
+    {% else %}
+      <li class="page-item disabled"><a class="page-link"><span>&raquo;</span></a></li>
+    {% endif %}
+  </ul>
+{% endif %}
+</nav>
+</div>
+    </div>
+</section>
 
+<!-- javascript section -->
+<script>
+$(document).ready(function() {
+    $('.arrow-btn').on('click',function() {
+        
+        $(this).parent().prev().prev().attr('style','display:block !important;opacity:0.7');
+        $(this).parent().prev().prev().prev().prev().attr('style','display:none !important;opacity:0.7');
+        $(this).next().attr('style','display:block !important');
+        $(this).attr('style','display:none !important');
+        
+        
+        
+    })
+
+
+    $('.fa-chevron-up').on('click',function() {
+        
+        
+        $(this).parent().prev().prev().attr('style','display:none !important;opacity:0.7');
+    $(this).parent().prev().prev().prev().prev().attr('style','display:block !important;opacity:0.7');
+    $(this).prev().attr('style','display:block !important');
+        $(this).attr('style','display:none !important');
+        
+        
+        
+    });
+    
+
+});
+</script>
+<!-- end of javascript section -->
 
 
 {% endblock content %}

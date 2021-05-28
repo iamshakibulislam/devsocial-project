@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+{% block title %}preprint details{% endblock title %}
+{% load static %}
+{% block content %}
+
+
+<section id="dark-overlay">
+	<div class="row justify-content-center" style="background-image:url({% static 'img/dark-overley.png' %});width:100%;height:39vh;margin:0px !important">
+		<div class="col-md-10">
+			<h1 class="text-white mb-2" style="margin-top:5rem">{{preprint.title}}</h1>
+			<p class="text-white ml-1 mb-0" style="font-size:0.8rem">AUTHORS</p>
+			<span class="text-white ml-1" style="margin-top:0px">{{preprint.authors}}</span>
+			<p class="text-white ml-1 mb-2 mt-3" style="font-size:0.8rem">AUTHOR ASSERTIONS
+			</p>
+			<div class="row justify-content-between">
+			<h5 class="text-white font-weight-bold ml-4">Conflict of Interest:<span>{% if preprint.conflict_interest_describe == '' %} No {% else %} Yes {% endif %}</span></h5>
+			<h5 class="text-white font-weight-bold">Public Data:<span>{% if  pubdata_len == 0 and pubdata_desc == 0 %} Not applicable {% elif pubdata_len == 0 %}Not Available  {% else %}  Available{% endif %}</span></h5>
+			<h5 class="text-white font-weight-bold">Preregistration:<span> {% if type_data_len == 0 and type_data_describe_len == 0 %} Not applicable {% elif type_data_len > 0 %}Available {% else %}Not available{% endif %} </span></h5>
+			</div>
+
+		</div>
+	</div>
+</section>
+
+
+
+<section id="content-section">
+	<div class="row justify-content-center mt-4">
+		<div class="col-md-5 mr-1">
+			<iframe style="height:80vh;width:100%" src="{{preprint.file.url}}"></iframe><br>
+			<p class="d-inline">Submited : {{preprint.date}}</p> | <p class="d-inline">Last edited : {{preprint.date}}</p>
+		</div>
+		<div class="col-md-5">
+			<div class="box pl-3 pt-3 pb-3 d-flex justify-content-between" style="background-color:#f0f5f3">
+				<a href="{% url 'downloads' preprint.id %}" class="btn btn-md btn-primary">Download preprint</a>
+				<span class="text-dark mr-4 mt-1" style="text-align:center;font-size:1.1rem">Downloads : {{downloaded}}</span>
+			</div>
+			<div class="abstract mt-4">
+				<h5 class="font-weight-bold text-dark mb-4">Abstract</h5>
+				<p class="text-dark summery">{{preprint.summery}}</p>
+				<p class="text-dark full d-none">{{preprint.absctract}}</p>
+				<span><a class="seemore">see more</a><span>
+					<span><a class="seeless d-none" >see less</a><span>
+			</div>
+
+			<div class="doi mt-4">
+				<h5 class="font-weight-bold text-dark mb-4">Preprint DOI</h5>
+				<p class="text-dark">
+					<a href="#" class="text-dark">{{preprint.doi}}</a>
+				</p>
+				
+			</div>
+
+			<div class="doi mt-4">
+				<h5 class="font-weight-bold text-dark mb-4">License</h5>
+				<p class="text-dark">
+					{{preprint.license_type}}
+				</p>
+				
+			</div>
+
+
+			<div class="doi mt-4">
+				<h5 class="font-weight-bold text-dark mb-4">Keywords</h5>
+				<p class="text-dark mt-2">
+					{% for x in preprint.keywords %} <span style="background-color:#e9f2f1;margin-right:4px;padding-left:7px;padding-right:7px;padding-top:4px;padding-bottom:4px">{{x}} </span>{% endfor %}
+				</p>
+				
+			</div>
+
+			<div class="doi mt-4">
+				<h5 class="font-weight-bold text-dark mb-4">Original publication date</h5>
+				<p class="text-dark">
+					{{preprint.date}}
+				</p>
+				
+			</div>
+		</div>
+	</div>
+</section>
+
+
+<script>
+$(document).ready(function() {
+    $('.seemore').on('click',function() {
+        
+        $(this).parent().prev().prev().attr('style','display:none !important;opacity:1');
+        $(this).parent().prev().attr('style','display:block !important;opacity:1');
+        $('.seeless').attr('style','display:block !important');
+        $(this).attr('style','display:none !important');
+
+        
+        
+        
+    })
+
+
+    $('.seeless').on('click',function() {
+        
+        
+    $('.summery').attr('style','display:block !important;opacity:1');
+    $('.full').attr('style','display:none !important;opacity:1');
+    $('.seemore').attr('style','display:block !important');
+        $(this).attr('style','display:none !important');
+        
+        
+        
+    });
+    
+
+});
+</script>
+{% endblock content %}
