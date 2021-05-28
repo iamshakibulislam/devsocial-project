@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'osf_project.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 #production databse postgres
-
+'''
 DATABASES = {
 
     'default': {
@@ -99,12 +99,12 @@ DATABASES = {
 }
 
 
-
+'''
 
 
 
 #end of production databse postgres
-'''
+
 
 DATABASES = {
     'default': {
@@ -114,7 +114,7 @@ DATABASES = {
 }
 
 
-'''
+
 
 
 
